@@ -6,35 +6,42 @@ Arc normally resets custom icons when it starts. This tool updates the icons ins
 
 ---
 
+## Quick start (one command)
+
+This repo ships **three** Arc `.icns` variants under `icons/` (from [macOS Icons](https://macosicons.com/)). **Variant 2** is the default.
+
+1. Clone or download the project, then open Terminal in that folder (see **Get the project** below).
+2. Install Apple’s command-line tools once if needed: `xcode-select --install`
+3. Run:
+
+   ```bash
+   chmod +x apply.sh change-arc-icon.sh sync-icons-from-downloads.sh
+   ./apply.sh
+   ```
+
+   That applies **`icons/arc-icon-variant-2.icns`**. Use `./apply.sh 1` or `./apply.sh 3` for the other bundled icons.
+
+4. If the Dock still shows the old icon: `killall Dock`
+
+**Optional:** If `icons/*.icns` are missing (for example you deleted them), restore from the same three filenames in **Downloads** from macOS Icons by running `./sync-icons-from-downloads.sh`.
+
+---
+
 ## Before you start
 
 You need:
 
 1. **Arc** installed (usually in your **Applications** folder). [Get Arc](https://arc.net/).
-2. **A `.icns` icon file** (not a normal `.png`—see step 1 below).
-3. **Terminal** (built into macOS) and a **one-time install** of Apple’s developer tools so your Mac can build a small helper (about one minute the first time only).
+2. Either use the **bundled** icons with `./apply.sh`, or your own **`.icns`** file with `./change-arc-icon.sh` (see **Custom icon** below).
+3. **Terminal** and a **one-time** install of Apple’s developer tools so your Mac can build a small helper (about one minute the first time only).
 
 ---
 
-## Step 1 — Get an icon file (`.icns`)
+## Get the project
 
-1. Open **[macOS Icons](https://macosicons.com/)** in your browser.
-2. Search for **Arc** (or any app you like).
-3. Download the icon. The site gives you an **`.icns`** file—often in your **Downloads** folder.
-4. Leave the file where it is for now (Downloads is fine). You’ll point the script at it in step 4.
+**ZIP:** [this repository on GitHub](https://github.com/olivertransf/arc-icon-changer) → **Code** → **Download ZIP** → unzip → `cd` into the folder.
 
----
-
-## Step 2 — Download this project
-
-**Easy way (no Git):**
-
-1. Open **[this repository on GitHub](https://github.com/olivertransf/arc-icon-changer)**.
-2. Click the green **Code** button → **Download ZIP**.
-3. Unzip it (double-click). You’ll get a folder like **`arc-icon-changer-main`**.  
-   Move it somewhere easy to find, for example your **Desktop** or **Documents**.
-
-**If you use Git:**
+**Git:**
 
 ```bash
 git clone https://github.com/olivertransf/arc-icon-changer.git
@@ -43,48 +50,46 @@ cd arc-icon-changer
 
 ---
 
-## Step 3 — Install Apple’s command-line tools (first time only)
+## Install Apple’s command-line tools (first time only)
 
-1. Open **Terminal** (Spotlight: press `Cmd + Space`, type **Terminal**, press Enter).
-2. Paste this line and press **Enter**:
+1. Open **Terminal** (`Cmd + Space`, type **Terminal**).
+2. Run:
 
    ```bash
    xcode-select --install
    ```
 
-3. If a window appears, click **Install** and wait until it finishes.
-4. If it says the tools are **already installed**, you’re good—continue to step 4.
+3. Complete the installer if prompted. If tools are already installed, continue.
 
 ---
 
-## Step 4 — Run the script
+## Bundled icons (`icons/`)
 
-1. In **Terminal**, go to the project folder.  
-   **Easy trick:** type `cd ` (with a space after `cd`), then **drag the folder** from Finder into the Terminal window, then press **Enter**.
+| File | `apply.sh` |
+|------|------------|
+| `arc-icon-variant-1.icns` | `./apply.sh 1` |
+| `arc-icon-variant-2.icns` | `./apply.sh` or `./apply.sh 2` (default) |
+| `arc-icon-variant-3.icns` | `./apply.sh 3` |
 
-   Example (your path will look different):
+`./apply.sh --no-quit` forwards `--no-quit` to `change-arc-icon.sh` (same behavior as the lower-level script).
 
-   ```bash
-   cd ~/Desktop/arc-icon-changer-main
-   ```
+---
 
-2. Allow the script to run (first time only):
+## Custom icon (`change-arc-icon.sh`)
+
+1. Get a **`.icns`** file (for example from [macOS Icons](https://macosicons.com/)).
+2. From the project folder:
 
    ```bash
    chmod +x change-arc-icon.sh
+   ./change-arc-icon.sh /path/to/your.icns
    ```
 
-3. Start the command, then add your icon path by **dragging the `.icns` file** into Terminal (this pastes the full path):
+   You can drag the `.icns` into Terminal after `./change-arc-icon.sh ` to paste the path.
 
-   ```bash
-   ./change-arc-icon.sh 
-   ```
+3. The **first run** may take **about a minute** while it builds the helper. Later runs are quick.
 
-   After `./change-arc-icon.sh ` (note the space at the end), drag your **`something.icns`** file from Finder into Terminal, then press **Enter**.
-
-4. The **first run** may take **about a minute** while it builds a small helper. Later runs are quick.
-
-5. When it says **Done**, **open Arc** again. You should see your new icon.
+4. When it says **Done**, open Arc again.
 
 ---
 
@@ -100,7 +105,7 @@ killall Dock
 
 ## After Arc updates
 
-When Arc updates, it may replace its app files and your custom icon can disappear. **Run step 4 again** with the same `.icns` file.
+When Arc updates, it may replace its app files and your custom icon can disappear. **Run `./apply.sh` again** (or `./change-arc-icon.sh` with the same `.icns` file).
 
 ---
 
@@ -121,7 +126,7 @@ To fully undo a change, you’d copy those files back into Arc’s app bundle (a
 | `swift: command not found` | Complete **Step 3** (`xcode-select --install`). |
 | `Could not find Arc` | Install Arc and make sure it’s **`/Applications/Arc.app`**. |
 | `Arc is still open` | Quit Arc completely (Cmd+Q), or close all windows and try again. |
-| Script won’t run | Make sure you ran `chmod +x change-arc-icon.sh` from inside the project folder. |
+| Script won’t run | Run `chmod +x apply.sh change-arc-icon.sh` from inside the project folder. |
 
 ---
 
