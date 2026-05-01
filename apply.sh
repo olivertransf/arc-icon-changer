@@ -55,8 +55,9 @@ if [[ ! -f "$ICNS" ]]; then
     exit 1
 fi
 
+# Invoke with bash so clone-from-GitHub works without chmod +x on scripts.
 if $NO_QUIT; then
-    exec "$SCRIPT_DIR/change-arc-icon.sh" --no-quit "$ICNS"
+    exec bash "$SCRIPT_DIR/change-arc-icon.sh" --no-quit "$ICNS"
 else
-    exec "$SCRIPT_DIR/change-arc-icon.sh" "$ICNS"
+    exec bash "$SCRIPT_DIR/change-arc-icon.sh" "$ICNS"
 fi

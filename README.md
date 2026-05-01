@@ -6,24 +6,23 @@ Arc normally resets custom icons when it starts. This tool updates the icons ins
 
 ---
 
-## Quick start (one command)
+## Quick start (clone and run)
 
-This repo ships **three** Arc `.icns` variants under `icons/` (from [macOS Icons](https://macosicons.com/)). **Variant 2** is the default.
+The **three** Arc `.icns` files live in **`icons/`** in the GitHub repo (no separate download). **Variant 2** is the default.
 
-1. Clone or download the project, then open Terminal in that folder (see **Get the project** below).
-2. Install Apple’s command-line tools once if needed: `xcode-select --install`
-3. Run:
+**One line** (needs [Arc](https://arc.net/) in `/Applications/Arc.app` and Xcode Command Line Tools for the first build):
 
-   ```bash
-   chmod +x apply.sh change-arc-icon.sh sync-icons-from-downloads.sh
-   ./apply.sh
-   ```
+```bash
+git clone https://github.com/olivertransf/arc-icon-changer.git && cd arc-icon-changer && bash apply.sh
+```
 
-   That applies **`icons/arc-icon-variant-2.icns`**. Use `./apply.sh 1` or `./apply.sh 3` for the other bundled icons.
+That applies **`icons/arc-icon-variant-2.icns`**. Other bundled icons: `bash apply.sh 1` or `bash apply.sh 3`.
 
-4. If the Dock still shows the old icon: `killall Dock`
+If Arc is not in the default location, set `ARC_APP` before running (example: `export ARC_APP="$HOME/Applications/Arc.app"`).
 
-**Optional:** If `icons/*.icns` are missing (for example you deleted them), restore from the same three filenames in **Downloads** from macOS Icons by running `./sync-icons-from-downloads.sh`.
+If the Dock still shows the old icon: `killall Dock`
+
+**Optional:** If `icons/*.icns` are missing, restore from the macOS Icons filenames in **Downloads** with `bash sync-icons-from-downloads.sh`.
 
 ---
 
