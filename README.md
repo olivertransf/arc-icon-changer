@@ -8,7 +8,7 @@ Arc normally resets custom icons when it starts. This tool updates the icons ins
 
 ## Quick start (clone and run)
 
-The **three** Arc `.icns` files live in **`icons/`** in the GitHub repo (no separate download). **Variant 2** is the default.
+The **three** Arc `.icns` files live in **`icons/`** in the GitHub repo (no separate download). **Variant 2** (Golden Gate Dark) is the default.
 
 **One line** (needs [Arc](https://arc.net/) in `/Applications/Arc.app` and Xcode Command Line Tools for the first build):
 
@@ -67,7 +67,7 @@ cd arc-icon-changer
 | File | `apply.sh` |
 |------|------------|
 | `arc-icon-variant-1.icns` | `./apply.sh 1` |
-| `arc-icon-variant-2.icns` | `./apply.sh` or `./apply.sh 2` (default) |
+| `arc-icon-variant-2.icns` | `./apply.sh` or `./apply.sh 2` (default: Golden Gate Dark) |
 | `arc-icon-variant-3.icns` | `./apply.sh 3` |
 
 `./apply.sh --no-quit` forwards `--no-quit` to `change-arc-icon.sh` (same behavior as the lower-level script).
