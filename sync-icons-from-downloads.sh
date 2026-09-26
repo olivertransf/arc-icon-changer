@@ -21,7 +21,7 @@ copy_one() {
 
 ERR=0
 copy_one "$DL/icnsFile_05011554296b948d8ff7f6d10229d35d_Arc.icns" "$ICON_DIR/arc-icon-variant-1.icns" || ERR=1
-copy_one "$DL/Arc_Browser__Golden_Gate_Dark__aQ4AvbJCMu-580fe1d7ef.icns" "$ICON_DIR/arc-icon-variant-2.icns" || ERR=1
+copy_one "$DL/Arc_Browser__Golden_Gate__cOhpBTUibd-3c0e547b77.icns" "$ICON_DIR/arc-icon-variant-2.icns" || ERR=1
 copy_one "$DL/icnsFile_cc24c8b676f7e8fc0d3d6d24d5346cf2_Arc.icns" "$ICON_DIR/arc-icon-variant-3.icns" || ERR=1
 
 if [[ "$ERR" -ne 0 ]]; then
